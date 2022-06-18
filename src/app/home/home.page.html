@@ -1,0 +1,40 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-item>
+      <ion-icon name="clipboard-outline"></ion-icon>
+      <ion-title>Driver Logs</ion-title>
+    </ion-item>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-card>
+    <ion-item>
+      <ion-icon name="person-add" slot="start"></ion-icon>
+      <ion-input type="text" [(ngModel)]="newPersonName" placeholder="Name"></ion-input>
+      <ion-button (click)="AddPerson()" >Add</ion-button>
+    </ion-item>
+  </ion-card>
+  
+  <ion-list>
+    <ion-item *ngFor="let person of Persons">
+      <ion-icon name="person" slot="start"></ion-icon>
+      <ion-label>{{person.name}}</ion-label>
+      <ion-label>{{person.logs.length}}</ion-label>
+      <ion-button (click)="AddCount(person.Id)" color="success">
+        <ion-icon name="add"></ion-icon>
+      </ion-button>
+      <ion-button (click)="MinusCount(person.Id)" color="warning">
+        <ion-icon name="remove"></ion-icon>
+      </ion-button>
+      <ion-button (click)="ResetPersonCount(person)">
+        <ion-icon name="refresh-outline"></ion-icon>
+      </ion-button>
+      <ion-button (click)="RemovePerson(person)" color="danger">
+        <ion-icon name="trash"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-list>
+
+</ion-content>
